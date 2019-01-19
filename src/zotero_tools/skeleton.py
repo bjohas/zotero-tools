@@ -90,8 +90,9 @@ def setup_logging(loglevel):
 
 def zotero_get(api_key, library_id, library_type, tag=None):
     zot = zotero.Zotero(library_id, library_type, api_key)
-    items = zot.everything(zot.top(tag=tag))
-    print(json.dumps(items))
+    items = zot.everything(zot.items(tag=tag))
+    for item in items:
+        print(json.dumps(items))
 
 
 def main(args):
